@@ -1,5 +1,11 @@
 <a href="https://uptimeproject.io" target="_blank"><img src="https://uptimeproject.io/img/logo.png" height="50px" /></a>
 
+![Codecov](https://img.shields.io/codecov/c/github/uptimeproject/slack?style=flat-square)
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/uptimeproject/slack/CI?style=flat-square)
+![Packagist PHP Version Support](https://img.shields.io/packagist/php-v/uptimeproject/slack?style=flat-square)
+![Packagist PHP Version Support](https://img.shields.io/packagist/v/uptimeproject/slack?style=flat-square)
+![Packagist Downloads](https://img.shields.io/packagist/dt/uptimeproject/slack?style=flat-square)
+
 A minimal but flexible integration for slack webhooks.
 
 ## How to use
