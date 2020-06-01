@@ -48,7 +48,7 @@ $workspace = new Workspace('https://hooks.slack.com/services/blablabla');
 $workspace->from('John')->send('Hello!', '#general');
 ```
 
-## How to develop
+## How to contribute
 
 Feel free to create a PR if you have any ideas for improvements. Or create an issue.
 
