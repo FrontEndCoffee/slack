@@ -13,7 +13,7 @@ use UptimeProject\Slack\Workspace;
 
 class WebhookTest extends TestCase
 {
-    public function test_send_message()
+    public function test_send_message(): void
     {
         $mock = new MockHandler([
             new Response(200),
@@ -29,7 +29,7 @@ class WebhookTest extends TestCase
         $draft->send('Hello world!');
     }
 
-    public function test_send_message_icon_emoji()
+    public function test_send_message_icon_emoji(): void
     {
         $mock = new MockHandler([
             new Response(200),
@@ -45,7 +45,7 @@ class WebhookTest extends TestCase
         $draft->send('Hello world!');
     }
 
-    public function test_send_message_icon_url()
+    public function test_send_message_icon_url(): void
     {
         $mock = new MockHandler([
             new Response(200),
@@ -61,7 +61,7 @@ class WebhookTest extends TestCase
         $draft->send('Hello world!');
     }
 
-    public function test_send_message_to_channel()
+    public function test_send_message_to_channel(): void
     {
         $mock = new MockHandler([
             new Response(200),
@@ -77,7 +77,7 @@ class WebhookTest extends TestCase
         $draft->send('Hello world!', '#general');
     }
 
-    public function test_send_message_error()
+    public function test_send_message_error(): void
     {
         $mock = new MockHandler([
             new Response(500),

@@ -16,7 +16,7 @@ class MessageDraft
     /** @var string|null */
     private $iconUrl;
 
-    public function __construct(Workspace $workspace, string $username = null, ?string $iconEmoji = null, ?string $iconUrl = null)
+    public function __construct(Workspace $workspace, string $username, ?string $iconEmoji = null, ?string $iconUrl = null)
     {
         $this->workspace    = $workspace;
         $this->username     = $username;
