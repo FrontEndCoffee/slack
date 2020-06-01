@@ -6,6 +6,7 @@ A minimal but flexible integration for slack webhooks.
 
 ```php
 <?php
+
 use UptimeProject\Slack\Workspace;
 
 $workspace = new Workspace('https://hooks.slack.com/services/blablabla');
@@ -18,6 +19,7 @@ If no icon is given, the default icon for the integration is used.
 
 ```php
 <?php
+
 use UptimeProject\Slack\Workspace;
 
 $workspace = new Workspace('https://hooks.slack.com/services/blablabla');
@@ -37,6 +39,7 @@ If no channel name is given, the default channel for the webhook is used.
 
 ```php
 <?php
+
 use UptimeProject\Slack\Workspace;
 
 $workspace = new Workspace('https://hooks.slack.com/services/blablabla');
