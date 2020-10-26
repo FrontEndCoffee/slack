@@ -31,13 +31,13 @@ class MessageDraft
             'username' => $this->username,
         ];
 
-        if ($to) {
+        if ($to !== null) {
             $payload['channel'] = $to;
         }
 
-        if ($this->iconEmoji) {
+        if ($this->iconEmoji !== null) {
             $payload['icon_emoji'] = $this->iconEmoji;
-        } elseif ($this->iconUrl) {
+        } elseif ($this->iconUrl !== null) {
             $payload['icon_url'] = $this->iconUrl;
         }
 
