@@ -6,7 +6,6 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7\Response;
-use PHPUnit\Framework\Assert;
 use PHPUnit\Framework\TestCase;
 use UptimeProject\Slack\Exceptions\SlackMessageException;
 use UptimeProject\Slack\MessageDraft;
@@ -25,7 +24,7 @@ class WebhookTest extends TestCase
         $workspace->setClient($client);
 
         $draft = $workspace->from('John');
-        Assert::assertInstanceOf(MessageDraft::class, $draft);
+        $this->assertInstanceOf(MessageDraft::class, $draft);
 
         $draft->send('Hello world!');
     }
@@ -41,7 +40,7 @@ class WebhookTest extends TestCase
         $workspace->setClient($client);
 
         $draft = $workspace->from('John', ':tada:');
-        Assert::assertInstanceOf(MessageDraft::class, $draft);
+        $this->assertInstanceOf(MessageDraft::class, $draft);
 
         $draft->send('Hello world!');
     }
@@ -57,7 +56,7 @@ class WebhookTest extends TestCase
         $workspace->setClient($client);
 
         $draft = $workspace->from('John', 'https://example.com/test.png');
-        Assert::assertInstanceOf(MessageDraft::class, $draft);
+        $this->assertInstanceOf(MessageDraft::class, $draft);
 
         $draft->send('Hello world!');
     }
@@ -73,7 +72,7 @@ class WebhookTest extends TestCase
         $workspace->setClient($client);
 
         $draft = $workspace->from('John');
-        Assert::assertInstanceOf(MessageDraft::class, $draft);
+        $this->assertInstanceOf(MessageDraft::class, $draft);
 
         $draft->send('Hello world!', '#general');
     }
@@ -89,7 +88,7 @@ class WebhookTest extends TestCase
         $workspace->setClient($client);
 
         $draft = $workspace->from('John');
-        Assert::assertInstanceOf(MessageDraft::class, $draft);
+        $this->assertInstanceOf(MessageDraft::class, $draft);
 
         $this->expectException(SlackMessageException::class);
         $draft->send('Hello world!');
