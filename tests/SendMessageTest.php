@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace UptimeProject\Slack\Tests;
 
@@ -6,6 +6,7 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7\Response;
+use PHPUnit\Framework\Assert;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\RequestInterface;
 use UptimeProject\Slack\Exceptions\SlackMessageException;
@@ -17,6 +18,7 @@ class SendMessageTest extends TestCase
     const EXPECTED_HTTP_METHOD = 'POST';
     const EXPECTED_URL = 'https://webhook.test';
 
+    /** @return array<string, array<int, mixed>> */
     public function message_data(): array
     {
         return [
@@ -77,8 +79,7 @@ class SendMessageTest extends TestCase
         int $httpResponse,
         ?string $expectedException,
         ?bool $iconIsUrl
-    ): void
-    {
+    ): void {
         $mock = new MockHandler([
             new Response($httpResponse),
         ]);
@@ -89,17 +90,17 @@ class SendMessageTest extends TestCase
                 $assertMethod = SendMessageTest::EXPECTED_HTTP_METHOD;
                 $assertUrl = SendMessageTest::EXPECTED_URL;
                 // Make some assertions
-                $this->assertSame($assertUrl, (string) $request->getUri());
-                $this->assertSame(strtolower($assertMethod), strtolower($request->getMethod()));
+                Assert::assertSame($assertUrl, (string) $request->getUri());
+                Assert::assertSame(strtolower($assertMethod), strtolower($request->getMethod()));
                 $body = json_decode((string) $request->getBody(), true);
-                $this->assertSame($username, $body['username'] ?? null);
-                $this->assertSame($message, $body['text'] ?? null);
+                Assert::assertSame($username, $body['username'] ?? null);
+                Assert::assertSame($message, $body['text'] ?? null);
                 if (is_bool($iconIsUrl)) {
                     $key = $iconIsUrl ? 'icon_url' : 'icon_emoji';
-                    $this->assertSame($icon, $body[$key] ?? null);
+                    Assert::assertSame($icon, $body[$key] ?? null);
                 }
-                $this->assertSame($channel, $body['channel'] ?? null);
-                
+                Assert::assertSame($channel, $body['channel'] ?? null);
+
                 // Go on with business.
                 return $handler($request, $options);
             };
@@ -110,9 +111,9 @@ class SendMessageTest extends TestCase
         $workspace->setClient($client);
 
         $draft = $workspace->from($username, $icon);
-        $this->assertInstanceOf(MessageDraft::class, $draft);
+        Assert::assertInstanceOf(MessageDraft::class, $draft);
 
-        if ($expectedException) {
+        if (is_string($expectedException)) {
             $this->expectException($expectedException);
         }
         $draft->send($message, $channel);
