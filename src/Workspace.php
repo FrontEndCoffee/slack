@@ -32,7 +32,6 @@ class Workspace
         return new MessageDraft($this, $username, $icon, null);
     }
 
-    /** @param array<string, string> $payload */
     public function sendRaw(array $payload): void
     {
         $response = $this->client->post($this->webhook, [
