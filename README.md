@@ -73,3 +73,7 @@ vendor/bin/phpunit --coverage-text
 ```
 
 These tools will also run in Github Actions on PR's and pushes on master.
+
+## UptimeProject.io
+
+Check out [uptimeproject.io](https://uptimeproject.io)
